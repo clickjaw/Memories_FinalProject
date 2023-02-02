@@ -1,4 +1,5 @@
 ﻿using System;
+using Memories.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Memories.Data
@@ -7,9 +8,13 @@ namespace Memories.Data
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
 		{
-
-
 		}
+
+		public DbSet<Family> Families { get; set; }
+
+		public DbSet<Address> Addresses { get; set; }
+
+		public DbSet<Picture> Pictures { get; set; }
 	}
 }
 

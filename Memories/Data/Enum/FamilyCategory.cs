@@ -4,7 +4,8 @@ namespace Memories.Data.Enum
 	public enum FamilyCategory
 	{
 		Morgan,
-		Thornton
+		Thornton,
+		Townsend
 	}
 }
 

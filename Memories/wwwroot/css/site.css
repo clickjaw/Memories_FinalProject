@@ -14,5 +14,15 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Bodoni Moda', serif;
+    font-weight: bold;
+}
+
+.Family {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: bold;
+    /*    color: #0AD6B4;
+*/
+    color: #09BFA0;
 }
