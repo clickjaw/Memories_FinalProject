@@ -22,7 +22,7 @@ namespace Memories.Data
                         new Family()
                         {
                             FamilyName = "Morgan",
-                            Image = "https://photos.app.goo.gl/uYrEfHwH1UisA3X27",
+                            Image = "https://i.imgur.com/OpqEbBQ.jpeg",
                             FamilyCategory = FamilyCategory.Morgan,
                             Address = new Address()
                             {
@@ -33,7 +33,7 @@ namespace Memories.Data
                         new Family()
                         {
                             FamilyName = "Thornton",
-                            Image = "https://photos.app.goo.gl/3Yc7u6ipeX4doatP6",
+                            Image = "https://i.imgur.com/17Zfj2P.jpg",
                             FamilyCategory = FamilyCategory.Thornton,
                             Address = new Address()
                             {
@@ -44,7 +44,7 @@ namespace Memories.Data
                         new Family()
                         {
                             FamilyName = "Townsend",
-                            Image = "https://photos.app.goo.gl/hjo6xFVTb5vYVrv39",
+                            Image = "https://i.imgur.com/eYa36Fy.jpg",
                             FamilyCategory = FamilyCategory.Townsend,
                             Address = new Address()
                             {

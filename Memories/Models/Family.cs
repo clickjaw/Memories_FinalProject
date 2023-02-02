@@ -14,7 +14,7 @@ namespace Memories.Models
 
         [ForeignKey("Address")]
         public int? AddressId { get; set; }
-        public Address? Address { get; set; }
+        public Address Address { get; set; }
 
         [ForeignKey("AppUser")]
 		public string? AppUserId { get; set; }

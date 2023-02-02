@@ -4,11 +4,37 @@
 @{
 }
 
+@model IEnumerable<Family>
 
 
 <div class="text-center">
     <h1 class="display-4 Family">Family</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach(var item in Model)
+{
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <img src="@item.Image"/>
+                <h4 class="card-title">@item.FamilyName</h4>
+            </div>
+        </div>
+    </div>
+}
+    </div>
+</div>
+
+
+
+
+
+
+@*<div class="text-center">
+    <h1 class="display-4 Family">Family</h1>
     <p>
         <img src="Media/Bettye2.jpg" width="60%" alt="Bettye Morgan"/>
     </p>
-</div>
+</div>*@

@@ -21,8 +21,11 @@ body {
 
 .Family {
     font-family: 'Bodoni Moda', serif;
-    font-weight: bold;
-    /*    color: #0AD6B4;
+
+/*    font-family: 'Homemade Apple', cursive;
 */
-    color: #09BFA0;
+    font-weight: bold;
+    color: #0AD6B4;
 }
+
+
