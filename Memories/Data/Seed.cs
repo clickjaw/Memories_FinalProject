@@ -22,18 +22,27 @@ namespace Memories.Data
                         new Family()
                         {
                             FamilyName = "Morgan",
-                            Image = "https://i.imgur.com/OpqEbBQ.jpeg",
+
+                            Image = "https://i.imgur.com/OpqEbBQ.jpg",
+
                             FamilyCategory = FamilyCategory.Morgan,
                             Address = new Address()
                             {
                                 City = "Covington",
                                 State = "TN"
-                            }
+                            },
+
+                         
+
+
                          },
                         new Family()
                         {
+
                             FamilyName = "Thornton",
+
                             Image = "https://i.imgur.com/17Zfj2P.jpg",
+
                             FamilyCategory = FamilyCategory.Thornton,
                             Address = new Address()
                             {
@@ -44,7 +53,9 @@ namespace Memories.Data
                         new Family()
                         {
                             FamilyName = "Townsend",
+
                             Image = "https://i.imgur.com/eYa36Fy.jpg",
+
                             FamilyCategory = FamilyCategory.Townsend,
                             Address = new Address()
                             {
@@ -52,46 +63,34 @@ namespace Memories.Data
                                 State = "IN"
                             }
                         },
-                        
+
                     });
                     context.SaveChanges();
                 }
-                //Races
-                //if (!context.Races.Any())
-                //{
-                //    context.Races.AddRange(new List<Race>()
-                //    {
-                //        new Race()
-                //        {
-                //            Title = "Running Race 1",
-                //            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                //            Description = "This is the description of the first race",
-                //            RaceCategory = RaceCategory.Marathon,
-                //            Address = new Address()
-                //            {
-                //                Street = "123 Main St",
-                //                City = "Charlotte",
-                //                State = "NC"
-                //            }
-                //        },
-                //        new Race()
-                //        {
-                //            Title = "Running Race 2",
-                //            Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                //            Description = "This is the description of the first race",
-                //            RaceCategory = RaceCategory.Ultra,
-                //            AddressId = 5,
-                //            Address = new Address()
-                //            {
-                //                Street = "123 Main St",
-                //                City = "Charlotte",
-                //                State = "NC"
-                //            }
-                //        }
-                //    });
-                //    context.SaveChanges();
-                //}
-            }
+             //Family Members
+                if (!context.FamilyMembers.Any())
+                {
+                    context.FamilyMembers.AddRange(new List<FamilyMember>()
+                    {
+                        new FamilyMember()
+                        {
+                            FirstName = "Bettye",
+                            LastName = "Morgan",
+                            MemberImage = "https://i.imgur.com/sFnheBI.jpg",
+                            
+                        },
+                        new FamilyMember()
+                        {
+                            FirstName = "Toby",
+                            LastName = "Morgan",
+                            MemberImage = "https://i.imgur.com/CEGzvI2.jpg",
+                            
+                        },
+                        
+        });
+                    context.SaveChanges();
+                }
+}
         }
 
         //public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)

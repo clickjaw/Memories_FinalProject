@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Memories.Data;
+using Memories.Interfaces;
+using Memories.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Memories.Controllers
 {
     public class FamilyController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IFamilyRepository _familyRepository;
 
-        public FamilyController(ApplicationDbContext context)
+        public FamilyController(IFamilyRepository familyRepository)
         {
-            _context = context;
+            _familyRepository = familyRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var families = _context.Families.ToList();
+            IEnumerable<Family> families = await _familyRepository.GetAll();
             return View(families);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            Family family = await _familyRepository.GetByIdAsync(id);
+            return View(family);
         }
     }
 }

@@ -6,15 +6,19 @@ namespace Memories.Data
 {
 	public class ApplicationDbContext : DbContext
 	{
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 		{
 		}
 
-		public DbSet<Family> Families { get; set; }
+		public DbSet<Family>? Families { get; set; }
 
-		public DbSet<Address> Addresses { get; set; }
+		public DbSet<Address>? Addresses { get; set; }
 
-		public DbSet<Picture> Pictures { get; set; }
-	}
+		public DbSet<Picture>? Pictures { get; set; }
+
+		public DbSet<FamilyMember>? FamilyMembers { get; set; }
+
+
+			}
 }
 

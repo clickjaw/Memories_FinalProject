@@ -44,7 +44,7 @@ namespace Memories.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Memories.Models.AppUser", b =>
+            modelBuilder.Entity("Memories.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -53,22 +53,19 @@ namespace Memories.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FamilyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("AppUser");
+                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("Memories.Models.Family", b =>
@@ -82,18 +79,22 @@ namespace Memories.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AppUserId")
+                    b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("FamilyCategory")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FamilyMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FamilyMemberName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FamilyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PictureId")
@@ -103,11 +104,40 @@ namespace Memories.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("FamilyMemberId");
 
                     b.HasIndex("PictureId");
 
                     b.ToTable("Families");
+                });
+
+            modelBuilder.Entity("Memories.Models.FamilyMember", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MemberImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("FamilyMembers");
                 });
 
             modelBuilder.Entity("Memories.Models.Picture", b =>
@@ -118,7 +148,7 @@ namespace Memories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AppUserId")
+                    b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
@@ -136,12 +166,12 @@ namespace Memories.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Pictures");
                 });
 
-            modelBuilder.Entity("Memories.Models.AppUser", b =>
+            modelBuilder.Entity("Memories.Models.ApplicationUser", b =>
                 {
                     b.HasOne("Memories.Models.Address", "Address")
                         .WithMany()
@@ -156,9 +186,13 @@ namespace Memories.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("Memories.Models.AppUser", "AppUser")
+                    b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Families")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Memories.Models.FamilyMember", "FamilyMember")
+                        .WithMany()
+                        .HasForeignKey("FamilyMemberId");
 
                     b.HasOne("Memories.Models.Picture", null)
                         .WithMany("Families")
@@ -166,19 +200,30 @@ namespace Memories.Migrations
 
                     b.Navigation("Address");
 
-                    b.Navigation("AppUser");
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("FamilyMember");
+                });
+
+            modelBuilder.Entity("Memories.Models.FamilyMember", b =>
+                {
+                    b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Memories.Models.Picture", b =>
                 {
-                    b.HasOne("Memories.Models.AppUser", "AppUser")
+                    b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("ApplicationUserId");
 
-                    b.Navigation("AppUser");
+                    b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Memories.Models.AppUser", b =>
+            modelBuilder.Entity("Memories.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Families");
                 });

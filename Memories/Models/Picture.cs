@@ -5,7 +5,7 @@ namespace Memories.Models
 	{
 		public int Id { get; set; }
 
-		public AppUser? AppUser { get; set; }
+		public ApplicationUser? ApplicationUser { get; set; }
 
 		public string FamilyMemberName { get; set; }
 		

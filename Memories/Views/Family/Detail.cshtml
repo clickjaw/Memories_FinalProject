@@ -1,0 +1,23 @@
+﻿@model Family
+
+    <h1>Families</h1>
+
+
+
+    <div class="text-center">
+            <h1 class="display-4 Family"> @Model.FamilyMember.FirstName @Model.FamilyMember.LastName </h1>
+        </div>
+
+
+    <div class="col-md-4 text-center">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <img class="img-fluid" src="@Model.FamilyMember.MemberImage" />
+                </div>
+            </div>
+        </div>
+
+
+
+
+

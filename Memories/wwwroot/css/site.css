@@ -28,4 +28,16 @@ body {
     color: #0AD6B4;
 }
 
+.FamilyPhoto {
+
+width: 350px;
+height: 300px;
+object-fit: cover;
+padding: 5px;
+}
+
+FamilyDetailHeadPhoto {
+max-width: 400px;
+}
+
 

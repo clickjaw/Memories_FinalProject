@@ -15,12 +15,20 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Views\Family\" />
+    <None Remove="Migrations\" />
+    <None Remove="Repository\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Views\FamilyMember\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Data\Enum\" />
     <Folder Include="wwwroot\Media\" />
     <Folder Include="Views\Family\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Views\FamilyMember\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
