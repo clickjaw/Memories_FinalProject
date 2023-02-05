@@ -1,22 +1,7 @@
-﻿@*@model FamilyMember
+﻿@model FamilyMember
 
+<div class="text-center">
+<h1>@Model.FirstName @Model.LastName</h1>
 
-
-
-
-
-
-
-<div class="container">
-        <div class="row">
-             <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-body">
-                        <img src="@Model.MemberImage"/>
-                        <h4 class="card-title">@Model.FirstName @Model.LastName </h4>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>*@
+<img src="@Model.MemberImage"/>
+</div>

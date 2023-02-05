@@ -15,7 +15,6 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Views\Family\" />
-    <None Remove="Migrations\" />
     <None Remove="Repository\" />
     <None Remove="Interfaces\" />
     <None Remove="Views\FamilyMember\" />
@@ -25,7 +24,6 @@
     <Folder Include="Data\Enum\" />
     <Folder Include="wwwroot\Media\" />
     <Folder Include="Views\Family\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Repository\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Views\FamilyMember\" />
@@ -37,10 +35,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
   </ItemGroup>
   <ItemGroup>

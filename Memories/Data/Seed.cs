@@ -32,9 +32,7 @@ namespace Memories.Data
                                 State = "TN"
                             },
 
-                         
-
-
+                        
                          },
                         new Family()
                         {
@@ -84,6 +82,13 @@ namespace Memories.Data
                             FirstName = "Toby",
                             LastName = "Morgan",
                             MemberImage = "https://i.imgur.com/CEGzvI2.jpg",
+                            
+                        },
+                        new FamilyMember()
+                        {
+                            FirstName = "Larry",
+                            LastName = "Morgan",
+                            MemberImage = "https://i.imgur.com/weiy85T.jpg",
                             
                         },
                         

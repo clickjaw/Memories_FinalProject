@@ -14,7 +14,7 @@
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
                         <img class="FamilyPhoto" src="@item.Image" />
-                        <a type="btn btn-success" asp-controller="Family" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+                        <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Detail" asp-route-id="@item.FamilyMember.Id" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Memories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230204211713_Init")]
-    partial class Init
+    [Migration("20230205230847_Seeding")]
+    partial class Seeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,12 +55,15 @@ namespace Memories.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FamilyName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -78,7 +81,7 @@ namespace Memories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("AddressId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("ApplicationUserId")
@@ -90,17 +93,13 @@ namespace Memories.Migrations
                     b.Property<int?>("FamilyMemberId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FamilyMemberName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FamilyName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PictureId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -109,8 +108,6 @@ namespace Memories.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FamilyMemberId");
-
-                    b.HasIndex("PictureId");
 
                     b.ToTable("Families");
                 });
@@ -127,12 +124,15 @@ namespace Memories.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MemberImage")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -140,37 +140,6 @@ namespace Memories.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("FamilyMembers");
-                });
-
-            modelBuilder.Entity("Memories.Models.Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FamilyMemberName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OtherName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OtherName2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("Memories.Models.ApplicationUser", b =>
@@ -186,7 +155,9 @@ namespace Memories.Migrations
                 {
                     b.HasOne("Memories.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Families")
@@ -195,10 +166,6 @@ namespace Memories.Migrations
                     b.HasOne("Memories.Models.FamilyMember", "FamilyMember")
                         .WithMany()
                         .HasForeignKey("FamilyMemberId");
-
-                    b.HasOne("Memories.Models.Picture", null)
-                        .WithMany("Families")
-                        .HasForeignKey("PictureId");
 
                     b.Navigation("Address");
 
@@ -210,16 +177,7 @@ namespace Memories.Migrations
             modelBuilder.Entity("Memories.Models.FamilyMember", b =>
                 {
                     b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.Navigation("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Memories.Models.Picture", b =>
-                {
-                    b.HasOne("Memories.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("FamilyMembers")
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
@@ -228,11 +186,8 @@ namespace Memories.Migrations
             modelBuilder.Entity("Memories.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Families");
-                });
 
-            modelBuilder.Entity("Memories.Models.Picture", b =>
-                {
-                    b.Navigation("Families");
+                    b.Navigation("FamilyMembers");
                 });
 #pragma warning restore 612, 618
         }

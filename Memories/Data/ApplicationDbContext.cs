@@ -14,8 +14,6 @@ namespace Memories.Data
 
 		public DbSet<Address>? Addresses { get; set; }
 
-		public DbSet<Picture>? Pictures { get; set; }
-
 		public DbSet<FamilyMember>? FamilyMembers { get; set; }
 
 

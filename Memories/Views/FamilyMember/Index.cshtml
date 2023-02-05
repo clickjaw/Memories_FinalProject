@@ -1,0 +1,20 @@
+﻿@model IEnumerable<FamilyMember>
+
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <img class="FamilyPhoto" src="@item.MemberImage" />
+                        <h4 class="card-title">@item.FirstName @item.LastName </h4>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
