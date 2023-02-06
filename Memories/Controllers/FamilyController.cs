@@ -36,12 +36,6 @@ namespace Memories.Controllers
             return View(families);
         }
 
-        //public IActionResult Index()
-        //{
-        //    var family = _context.Families.ToList();
-        //    return View(family);
-        //}
-
         public async Task<IActionResult> Detail(int id)
         {
             Family family = await _familyRepository.GetByIdAsync(id);
@@ -133,6 +127,33 @@ namespace Memories.Controllers
 
             _familyRepository.Update(family);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var familyDetails = await _familyRepository.GetByIdAsync(id);
+            if (familyDetails == null) return View("Error");
+            return View(familyDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteFamily(int id)
+        {
+            var familyDetails = await _familyRepository.GetByIdAsync(id);
+
+            if (familyDetails == null)
+            {
+                return View("Error");
+            }
+
+            if (!string.IsNullOrEmpty(familyDetails.Image))
+            {
+                _ = _photoService.DeletePhotoAsync(familyDetails.Image);
+            }
+
+            _familyRepository.Delete(familyDetails);
             return RedirectToAction("Index");
         }
 
