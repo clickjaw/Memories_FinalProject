@@ -20,15 +20,21 @@ namespace Memories.Repository
             return Save();
         }
 
-        public bool Update(Family family)
-        {
-            _context.Update(family);
-            return Save();
-        }
-
         public bool Delete(Family family)
         {
             _context.Remove(family);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved >= 0;
+        }
+
+        public bool Update(Family family)
+        {
+            _context.Update(family);
             return Save();
         }
 
@@ -48,11 +54,12 @@ namespace Memories.Repository
             return await _context.Families.Where(b => b.FamilyName.Contains(familyName)).ToListAsync();
         }
 
-        public bool Save()
+        public async Task<Family?> GetByIdAsyncNoTracking(int id)
         {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            return await _context.Families.AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
         }
+
+
 
     }
 }

@@ -8,6 +8,7 @@ namespace Memories.Interfaces
 		Task<IEnumerable<Family>> GetAll();
 
 		Task<Family> GetByIdAsync(int id);
+		Task<Family> GetByIdAsyncNoTracking(int id);
 
 		Task<IEnumerable<Family>> GetFamilyByName(string familyName);
 

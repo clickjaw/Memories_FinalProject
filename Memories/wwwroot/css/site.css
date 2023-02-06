@@ -40,4 +40,13 @@ FamilyDetailHeadPhoto {
 max-width: 400px;
 }
 
+.AddFamilyButton {
+    font-size: 36px;
+    transform: rotate(90deg);
+}
+
+    .AddFamilyButton hover {
+        Background-color: #0AD6B4;
+    }
+
 

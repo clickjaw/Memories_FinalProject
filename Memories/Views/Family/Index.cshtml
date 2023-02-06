@@ -7,20 +7,34 @@
 
 
 <div class="container text-center">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                            <img class="FamilyPhoto" src="@item.Image" />
-                            <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
-                        </div>
+    <a type="btn btn-success" asp-controller="Family" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
+    <div class="row">
+        <br/>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <img class="FamilyPhoto" src="@item.Image" />
+                        <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+                        <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">
+                            Edit
+                        </a>
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+
+            <!--<div>-->
+            @*<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">
+                    Edit
+                </a>*@
+            @*<a type="button" class="btn btn-sm btn-outline-danger" asp-controller="Club" asp-action="Delete" asp-route-id="@club.Id">
+                    Delete
+                </a>*@
+            <!--</div>-->
+        }
     </div>
+</div>
 
 @*<div class="container text-center">
         <div class="row">

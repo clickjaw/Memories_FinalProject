@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Memories.Data;
 using Memories.Interfaces;
 using Memories.Models;
+using Memories.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,6 +45,18 @@ namespace Memories.Controllers
             return View();
         }
 
-       
+        [HttpPost]
+        public async Task<IActionResult> Create(FamilyMember familyMember)
+        {
+            if (ModelState.IsValid)
+            {
+                _familyMemberRepository.Add(familyMember);
+                return RedirectToAction("Index");
+            }
+
+            return View(familyMember);
+        }
+
+
     }
 }

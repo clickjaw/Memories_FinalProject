@@ -1,22 +1,40 @@
-﻿@model Family
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@*@using Memories.ViewModels
+    @model CreateFamilyViewModel*@
+
+@model Family
 @{
+    ViewData["Title"] = "Create";
 }
 
-<form method="post" asp-action="Create">
+<form method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="FamilyName">Family Name</label>
-        <input asp-for="FamilyName" class="form-control"/>
+        <input asp-for="FamilyName" class="form-control" />
         <span asp-validation-for="FamilyName" class="text-danger"></span>
 
     </div>
     <div class="form-group">
         <label asp-for="Image">Image</label>
-        <input asp-for="Image" class="form-control"/>
+        <input asp-for="Image" type="file" class="form-control" />
+        <img id="imgpreview" class="pt-2" />
         <span asp-validation-for="Image" class="text-danger"></span>
+        <img id="imgpreview" class="pt-2" />
 
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+    <script>$("#ImageUpload").change(function () {
+            readURL(this);
+        });
+        CKEDITOR.replace('Description');</script>
+
+}

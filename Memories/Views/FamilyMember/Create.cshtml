@@ -1,39 +1,32 @@
 ﻿@using Memories.Data.Enum
 
 @model FamilyMember
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
 
 <form>
     <div class="form-group">
-        <label for="FirstName">First Name</label>
-        <input for="FirstName" class="form-control" placeholder="First Name">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" class="form-control" placeholder="First Name">
         <span asp-validation-for="FirstName" class="text-danger"></span>
 
     </div>
     <div class="form-group">
-        <label for="LastName">Last Name</label>
-        <input for="LastName" class="form-control" placeholder="Last Name">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" class="form-control" placeholder="Last Name">
         <span asp-validation-for="LastName" class="text-danger"></span>
 
     </div>
     <div class="form-group">
-        <label for="MemberImage">Image</label>
-        <input for="MemberImage" class="form-control" placeholder="Enter Image URL">
+        <label asp-for="MemberImage">Image</label>
+        <input asp-for="MemberImage" class="form-control" placeholder="Enter Image URL">
         <span asp-validation-for="MemberImage" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="FamilyCategory">Family Name</label>
+        <label asp-for="FamilyCategory">Family Name</label>
         <select asp-for="FamilyCategory" asp-items="@Html.GetEnumSelectList<FamilyCategory>()" class="form-control">
             <option>--Select--</option>
         </select>
         <span asp-validation-for="MemberImage" class="text-danger"></span>
     </div>
-
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

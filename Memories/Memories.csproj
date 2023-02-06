@@ -18,6 +18,15 @@
     <None Remove="Repository\" />
     <None Remove="Interfaces\" />
     <None Remove="Views\FamilyMember\" />
+    <None Remove="Helpers\" />
+    <None Remove="Services\" />
+    <None Remove="CloudinaryDotNet" />
+    <None Remove="ViewModels\" />
+    <None Remove="Validation\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Microsoft.AspNetCore.Identity" />
+    <None Remove="Microsoft.Extensions.Identity.Core" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -27,6 +36,12 @@
     <Folder Include="Repository\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Views\FamilyMember\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\Media\Pictures\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
@@ -36,8 +51,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.20.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Media\" />
+    <Content Remove="wwwroot\Media\Pictures\" />
   </ItemGroup>
 </Project>

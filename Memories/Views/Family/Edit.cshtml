@@ -1,0 +1,27 @@
+﻿@using Memories.Data.Enum
+@using Memories.ViewModels
+@model EditFamilyViewModel
+
+
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="FamilyName">Title</label>
+        <input asp-for="FamilyName" class="form-control" placeholder="Title">
+        <span asp-validation-for="FamilyName" class="text-danger"></span>
+    </div>
+
+    @*<div class="form-group">
+        <label asp-for="ClubCategory">Club Category</label>
+        <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
+            <option selected="selected" value="">--Select--</option>
+        </select>
+        <span asp-validation-for="ClubCategory" class="text-danger"></span>
+    </div>*@
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
