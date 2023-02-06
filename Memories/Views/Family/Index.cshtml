@@ -7,22 +7,38 @@
 
 
 <div class="container text-center">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-body">
-                        <img class="FamilyPhoto" src="@item.Image" />
-                        <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Detail" asp-route-id="@item.FamilyMember.Id" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <img class="FamilyPhoto" src="@item.Image" />
+                            <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
 
+@*<div class="container text-center">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <h3>@item.FamilyName</h3>
+                        <div class="card-body">
+                            <img class="FamilyPhoto" src="@item.Image" />
+                            <a href="../familymember">Photos</a>
 
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>*@
 
 @*<div class="container">
         <div class="row">

@@ -16,6 +16,7 @@ namespace Memories.Models
 
 		[ForeignKey("FamilyMember")]
 		public int? FamilyMemberId { get; set; }
+
 		public FamilyMember? FamilyMember { get; set; }
 
 
