@@ -1,0 +1,21 @@
+﻿@model Family
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="FamilyName">Family Name</label>
+        <input asp-for="FamilyName" class="form-control" placeholder="Family Name">
+        <span asp-validation-for="FamilyName" class="text-danger"></span>
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" class="form-control" placeholder="Enter Image URL">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

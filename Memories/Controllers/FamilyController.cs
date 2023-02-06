@@ -32,6 +32,43 @@ namespace Memories.Controllers
             return View(family);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Family family)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(family);
+            }
+
+            _context.Add(family);
+            //_context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        //[HttpPost]
+        //public IActionResult Create(Family family)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(family);
+        //        _context.SaveChanges();
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return View(family);
+        //    }
+        //}
+
+
 
 
         //private readonly IFamilyRepository _familyRepository;

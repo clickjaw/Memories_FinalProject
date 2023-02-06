@@ -31,6 +31,13 @@ namespace Memories.Controllers
             return View(familyMember);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        
+
 
         //private readonly IFamilyMemberRepository _familyMemberRepository;
 
