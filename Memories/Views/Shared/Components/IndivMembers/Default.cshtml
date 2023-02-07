@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Family>
+
+<div>
+    <div class="list-group">
+        <a href ="/Family">Family</a>
+    </div>
+    <br/>
+
+    @foreach (var item in Model)
+{
+            <div>
+                <a asp-controller="@item.FamilyMember" asp-action="Detail" asp-route="@item.FamilyMember.Id">@item.FamilyMember.FirstName </a>
+            </div>
+}
+
+</div>

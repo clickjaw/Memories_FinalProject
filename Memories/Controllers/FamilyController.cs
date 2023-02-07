@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Memories.Data;
 using Memories.Interfaces;
 using Memories.Models;
+using Memories.Repository;
 using Memories.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,11 @@ namespace Memories.Controllers
 
             //If it never works just delete ApplicationUserId and use return View()
 
+        }
+
+        public IActionResult Morgan()
+        {
+            return View();
         }
 
 

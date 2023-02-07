@@ -83,5 +83,33 @@ namespace Memories.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var familyDetails = await _familyMemberRepository.GetByIdAsync(id);
+            if (familyDetails == null) return View("Error");
+            return View(familyDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteFamily(int id)
+        {
+            var familyDetails = await _familyMemberRepository.GetByIdAsync(id);
+
+            if (familyDetails == null)
+            {
+                return View("Error");
+            }
+
+            if (!string.IsNullOrEmpty(familyDetails.MemberImage))
+            {
+                _ = _photoService.DeletePhotoAsync(familyDetails.MemberImage);
+            }
+
+            _familyMemberRepository.Delete(familyDetails);
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

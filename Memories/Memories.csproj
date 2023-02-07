@@ -28,6 +28,7 @@
     <None Remove="Microsoft.Extensions.Identity.Core" />
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Views\Dashboard\" />
+    <None Remove="Views\Shared\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -44,6 +45,7 @@
     <Folder Include="Validation\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
