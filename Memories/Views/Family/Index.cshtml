@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<Family>
 
+@if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("admin"))
+    {
 
-<div class="text-center">
-    <h1 class="display-4 Family">Family</h1>
-</div>
+    <div class="text-center">
+        <h1 class="display-4 Family">Family</h1>
+    </div>
 
 
 <div class="container text-center">
@@ -22,10 +24,10 @@
                         <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-                        {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
 
                             <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        }
+                            }
 
                     </div>
                 </div>
@@ -39,9 +41,10 @@
                     Delete
                 </a>*@
             <!--</div>-->
-        }
+            }
     </div>
 </div>
+    }
 
 @*<div class="container text-center">
         <div class="row">
