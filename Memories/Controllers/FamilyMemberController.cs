@@ -19,13 +19,16 @@ namespace Memories.Controllers
         private readonly IFamilyMemberRepository _familyMemberRepository;
         private readonly IPhotoService _photoService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FamilyMemberController(ApplicationDbContext context, IFamilyMemberRepository familyMemberRepository, IPhotoService photoService)
+
+        public FamilyMemberController(ApplicationDbContext context, IFamilyMemberRepository familyMemberRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
 
             _context = context;
             _familyMemberRepository = familyMemberRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IActionResult> Index()
@@ -43,7 +46,12 @@ namespace Memories.Controllers
 
         public IActionResult Create()
         {
-            return View();
+
+            var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var createMemberViewModel = new CreateFamilyMemberViewModel { ApplicationUserId = curUserId };
+            return View(createMemberViewModel);
+
+            //return View();
         }
 
         [HttpPost]
@@ -58,6 +66,7 @@ namespace Memories.Controllers
                 {
                     FirstName = familyMemberVM.FirstName,
                     LastName=familyMemberVM.LastName,
+                    ApplicationUserId = familyMemberVM.ApplicationUserId,
 
                     MemberImage = result.Url.ToString(),
                 };

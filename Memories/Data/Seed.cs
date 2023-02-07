@@ -122,12 +122,7 @@ namespace Memories.Data
                         UserName = "tylermorgandev",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
-                        //Address = new Address()
-                        //{
-                        //    Street = "123 Main St",
-                        //    City = "Memphis",
-                        //    State = "TN"
-                        //}
+                        
                     };
                     await userManager.CreateAsync(newAdminUser, "Coding@1234?");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);

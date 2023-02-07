@@ -20,13 +20,15 @@ namespace Memories.Controllers
         private readonly IFamilyRepository _familyRepository;
         private readonly IPhotoService _photoService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FamilyController(ApplicationDbContext context, IFamilyRepository familyRepository, IPhotoService photoService)
+        public FamilyController(ApplicationDbContext context, IFamilyRepository familyRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
-
+            
             _context = context;
             _familyRepository = familyRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -45,7 +47,12 @@ namespace Memories.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var createFamilyViewModel = new CreateFamilyViewModel { ApplicationUserId = curUserId };
+            return View(createFamilyViewModel);
+
+            //If it never works just delete ApplicationUserId and use return View()
+
         }
 
 
@@ -61,6 +68,7 @@ namespace Memories.Controllers
                 {
                     FamilyName = familyVM.FamilyName,
                     Image = result.Url.ToString(),
+                    ApplicationUserId = familyVM.ApplicationUserId
                 };
 
                 _familyRepository.Add(family);
@@ -68,7 +76,7 @@ namespace Memories.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Upload Failed");
+                ModelState.AddModelError("", "Upload Failed");  
             }
 
             return View(familyVM);

@@ -26,11 +26,6 @@ namespace Memories.Models
 
 		public FamilyMember? FamilyMember { get; set; }
 
-
-        //[ForeignKey("Address")]
-        //public int? AddressId { get; set; }
-        //public Address? Address { get; set; }
-
         [ForeignKey("ApplicationUser")]
         public string? ApplicationUserId { get; set; }
         public ApplicationUser? ApplicationUser { get; set; }

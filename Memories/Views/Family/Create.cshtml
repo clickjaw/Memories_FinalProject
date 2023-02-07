@@ -1,12 +1,13 @@
-﻿@*@using Memories.ViewModels
-    @model CreateFamilyViewModel*@
+﻿@using Memories.ViewModels
+    @model CreateFamilyViewModel
 
-@model Family
+
 @{
     ViewData["Title"] = "Create";
 }
 
 <form method="post" asp-action="Create" enctype="multipart/form-data">
+    <input type="hidden" id="ApplicationUserId" asp-for="ApplicationUserId"/>
     <div class="form-group">
         <label asp-for="FamilyName">Family Name</label>
         <input asp-for="FamilyName" class="form-control" />

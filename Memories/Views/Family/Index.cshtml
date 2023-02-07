@@ -7,7 +7,7 @@
 
 
 <div class="container text-center">
-    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("admin"))
         {
         <a type="btn btn-success" asp-controller="Family" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
         }

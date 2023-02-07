@@ -12,6 +12,8 @@ namespace Memories.ViewModels
         public IFormFile MemberImage { get; set; }
 
         public FamilyCategory FamilyCategory { get; set; }
+
+        public string ApplicationUserId { get; set; }
     }
 }
 
