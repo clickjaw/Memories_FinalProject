@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<FamilyMember>
 
 <div class="container">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+        {
+        <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
+        }
+
     <div class="row">
         @foreach (var item in Model)
         {

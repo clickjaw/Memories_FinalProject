@@ -6,6 +6,8 @@ using Memories.Data;
 using Memories.Interfaces;
 using Memories.Models;
 using Memories.Repository;
+using Memories.Services;
+using Memories.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,11 +17,15 @@ namespace Memories.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IFamilyMemberRepository _familyMemberRepository;
+        private readonly IPhotoService _photoService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public FamilyMemberController(ApplicationDbContext context, IFamilyMemberRepository familyMemberRepository)
+        public FamilyMemberController(ApplicationDbContext context, IFamilyMemberRepository familyMemberRepository, IPhotoService photoService)
         {
+
             _context = context;
             _familyMemberRepository = familyMemberRepository;
+            _photoService = photoService;
         }
 
         public async Task<IActionResult> Index()
@@ -34,11 +40,6 @@ namespace Memories.Controllers
             return View(familyMember);
         }
 
-        //public IActionResult Detail(int id)
-        //{
-        //    FamilyMember familyMember = _context.FamilyMembers.FirstOrDefault(f => f.Id == id);
-        //    return View(familyMember);
-        //}
 
         public IActionResult Create()
         {
@@ -46,15 +47,30 @@ namespace Memories.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(FamilyMember familyMember)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateFamilyMemberViewModel familyMemberVM)
         {
             if (ModelState.IsValid)
             {
+                var result = await _photoService.AddPhotoAsync(familyMemberVM.MemberImage);
+
+                var familyMember = new FamilyMember
+                {
+                    FirstName = familyMemberVM.FirstName,
+                    LastName=familyMemberVM.LastName,
+
+                    MemberImage = result.Url.ToString(),
+                };
+
                 _familyMemberRepository.Add(familyMember);
                 return RedirectToAction("Index");
             }
+            else
+            {
+                ModelState.AddModelError("", "Upload Failed");
+            }
 
-            return View(familyMember);
+            return View(familyMemberVM);
         }
 
 

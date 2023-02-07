@@ -2,7 +2,14 @@
 
 @model FamilyMember
 
-<form>
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="FirstName">First Name</label>
         <input asp-for="FirstName" class="form-control" placeholder="First Name">
@@ -17,8 +24,10 @@
     </div>
     <div class="form-group">
         <label asp-for="MemberImage">Image</label>
-        <input asp-for="MemberImage" class="form-control" placeholder="Enter Image URL">
+        <input asp-for="MemberImage" type="file" class="form-control" />
+        <img id="imgpreview" class="pt-2" />
         <span asp-validation-for="MemberImage" class="text-danger"></span>
+
     </div>
 
     <div class="form-group">
@@ -30,3 +39,16 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+    <script>$("#ImageUpload").change(function () {
+            readURL(this);
+        });
+        CKEDITOR.replace('Description');</script>
+
+}

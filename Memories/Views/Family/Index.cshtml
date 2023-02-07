@@ -7,9 +7,12 @@
 
 
 <div class="container text-center">
-    <a type="btn btn-success" asp-controller="Family" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+        {
+        <a type="btn btn-success" asp-controller="Family" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
+        }
     <div class="row">
-        <br/>
+        <br />
         @foreach (var item in Model)
         {
             <div class="col-md-4">
@@ -17,12 +20,13 @@
                     <div class="card-body">
                         <img class="FamilyPhoto" src="@item.Image" />
                         <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
-                        <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">
-                            Edit
-                        </a>
-                        <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">
-                            Delete
-                        </a>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                        {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                            <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+
                     </div>
                 </div>
             </div>

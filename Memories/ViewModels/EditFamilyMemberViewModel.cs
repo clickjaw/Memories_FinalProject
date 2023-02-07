@@ -1,14 +1,15 @@
 ﻿using System;
 using Memories.Data.Enum;
-using Memories.Models;
 
 namespace Memories.ViewModels
 {
-	public class CreateFamilyViewModel
+	public class EditFamilyMemberViewModel
 	{
         public int Id { get; set; }
         public string FamilyName { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile MemberImage { get; set; }
+        public string? URL { get; set; }
+
 
         public FamilyCategory FamilyCategory { get; set; }
     }
