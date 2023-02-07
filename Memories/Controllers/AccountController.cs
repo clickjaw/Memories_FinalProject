@@ -82,7 +82,8 @@ namespace Memories.Controllers
             var newUser = new ApplicationUser()
             {
                 Email = registerViewModel.EmailAddress,
-                UserName = registerViewModel.EmailAddress
+                UserName = registerViewModel.EmailAddress,
+                //UserRoles = registerViewModel.UserRoles,
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 

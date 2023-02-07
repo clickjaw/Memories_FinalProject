@@ -36,18 +36,21 @@
                         <input asp-for="FamilyMember.FirstName" class="form-control" />
                         <span asp-validation-for="FamilyMember.FirstName" class="text-danger"></span>
                     </div>
-                    <br/>
+                    <br />
                     <div class="form-group">
                         <label asp-for="FamilyMember.LastName" class="control-label"></label>
                         <input asp-for="FamilyMember.LastName" class="form-control" />
                         <span asp-validation-for="FamilyMember.LastName" class="text-danger"></span>
                     </div>
-                    <br/>
+                    <br />
                     <div class="form-group">
                         <label asp-for="FamilyCategory" class="control-label">Select Family Name</label>
 
-                        <select asp-for="FamilyCategory" asp-items="@Html.GetEnumSelectList<FamilyCategory>()" class="form-control">
+                        <select asp-for="FamilyCategory"
+                                class="form-control">
                             <option>--Select--</option>
+
+
                         </select>
                     </div>
                     <br />

@@ -1,0 +1,16 @@
+﻿using Memories.Models
+@model IEnumerable<FamilyMember>
+
+
+
+<div class="text-center">
+
+    @foreach (var item in Model)
+        {
+
+    <h1>@item.FirstName @item.LastName</h1>
+
+    <img src="@item.MemberImage" />
+
+        }
+</div>

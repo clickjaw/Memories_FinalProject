@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Family>
+﻿@using Memories.Data
+
+@model IEnumerable<Family>
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("admin"))
     {
@@ -22,13 +24,20 @@
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
                         <img class="FamilyPhoto" src="@item.Image" />
-                        <a type="btn btn-success" asp-controller="@item.FamilyName" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
 
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                        @*@if (item.FamilyMember.LastName == User.IsInRole($"{item.FamilyMember.LastName}"))
+                        {*@
+
+                            <a type="btn btn-success" asp-controller="@item.FamilyName" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("admin") || User.IsInRole("user"))
                             {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
 
-                            <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             }
+                          @*}*@
+
+
 
                     </div>
                 </div>
@@ -36,7 +45,8 @@
 
 
 
-                    }
+
+                   }
     </div>
 </div>
     }

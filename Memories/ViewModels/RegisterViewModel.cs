@@ -7,11 +7,14 @@ using Memories.Models;
 
 namespace Memories.ViewModels
 {
-	public class RegisterViewModel
-	{
+    public class RegisterViewModel
+    {
         [Display(Name = "Email Address")]
         [Required(ErrorMessage = "Email address is required")]
         public string EmailAddress { get; set; }
+
+
+        //public string? UserRoles { get; set; }
 
         [ForeignKey("FamilyMember")]
         public int? FamilyMemberId { get; set; }
@@ -21,8 +24,8 @@ namespace Memories.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name ="Confirm Password")]
-        [Required(ErrorMessage ="Confirmation is required")]
+        [Display(Name = "Confirm Password")]
+        [Required(ErrorMessage = "Confirmation is required")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
