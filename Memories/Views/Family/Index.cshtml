@@ -3,8 +3,6 @@
 @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("admin"))
     {
 
-        <vc:indiv-members/>
-
     <div class="text-center">
         <h1 class="display-4 Family">Family</h1>
     </div>
@@ -19,11 +17,12 @@
         <br />
         @foreach (var item in Model)
         {
+               
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
                         <img class="FamilyPhoto" src="@item.Image" />
-                        <a type="btn btn-success" asp-controller="Family" asp-action="@item.FamilyName" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
+                        <a type="btn btn-success" asp-controller="@item.FamilyName" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                             {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
@@ -35,15 +34,9 @@
                 </div>
             </div>
 
-            <!--<div>-->
-            @*<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">
-                    Edit
-                </a>*@
-            @*<a type="button" class="btn btn-sm btn-outline-danger" asp-controller="Club" asp-action="Delete" asp-route-id="@club.Id">
-                    Delete
-                </a>*@
-            <!--</div>-->
-            }
+
+
+                    }
     </div>
 </div>
     }

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FamilyMember>
+@if (User.Identity.IsAuthenticated && User.IsInRole("user")||User.IsInRole("admin"))
+{
+    <div class="container">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+        {
+            <a type="btn btn-success" asp-controller="FamilyMember" asp-action="Create" class="btn AddFamilyButton btn-xlg btn-outline-secondary">+</a>
+        }
+
+    <div class="row">
+        @foreach (var item in Model)
+
+            @if (item.LastName == "Thornton")
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <img class="FamilyPhoto" src="@item.MemberImage" />
+                            <a type="btn btn-success" asp-controller="Thornton" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">@item.FirstName @item.LastName </a>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                            {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Thornton" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                                <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Thornton" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        </div>
+}

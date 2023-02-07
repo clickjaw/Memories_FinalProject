@@ -22,14 +22,16 @@ namespace Memories.Controllers
         private readonly IPhotoService _photoService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IFamilyMemberRepository _familyMemberRepository;
 
-        public FamilyController(ApplicationDbContext context, IFamilyRepository familyRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
+        public FamilyController(ApplicationDbContext context, IFamilyRepository familyRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor, IFamilyMemberRepository familyMemberRepository)
         {
             
             _context = context;
             _familyRepository = familyRepository;
             _photoService = photoService;
             _httpContextAccessor = httpContextAccessor;
+            _familyMemberRepository = familyMemberRepository;
         }
 
 
@@ -37,6 +39,22 @@ namespace Memories.Controllers
         {
             IEnumerable<Family> families = await _familyRepository.GetAll();
             return View(families);
+        }
+
+
+        public async Task<IActionResult> Morgan(int id)
+        {
+            var family = await _familyMemberRepository.GetByIdAsync(id);
+
+            var morganFamily = new CreateFamilyMemberViewModel
+            {
+                FirstName = family.FirstName,
+                //MemberImage = family.MemberImage,
+                //FamilyCategory = family.FamilyCategory
+            };
+            return View(morganFamily);
+
+            //return View();
         }
 
         public async Task<IActionResult> Detail(int id)
@@ -56,10 +74,6 @@ namespace Memories.Controllers
 
         }
 
-        public IActionResult Morgan()
-        {
-            return View();
-        }
 
 
         [HttpPost]
