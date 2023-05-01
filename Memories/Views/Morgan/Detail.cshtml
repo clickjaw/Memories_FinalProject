@@ -1,16 +1,23 @@
-﻿using Memories.Models
-@model IEnumerable<FamilyMember>
-
-
+﻿
+@model FamilyMember
 
 <div class="text-center">
 
-    @foreach (var item in Model)
-        {
 
-    <h1>@item.FirstName @item.LastName</h1>
+    <h1>@Model.FirstName @Model.LastName</h1>
 
-    <img src="@item.MemberImage" />
+    <img src="@Model.MemberImage" />
 
-        }
+
+</div>
+
+
+<div class="col-md-4">
+<div class="card mb-4 box-shadow">
+    <div class="card-body">
+        <h1>@Model.FirstName @Model.LastName</h1>
+        <img src="@Model.MemberImage" />
+
+
+    </div>
 </div>

@@ -31,6 +31,7 @@
                             <a type="btn btn-success" asp-controller="@item.FamilyName" asp-action="Index" class="btn btn-sm btn-outline-secondary">@item.FamilyName</a>
 
                             @if (User.Identity.IsAuthenticated && User.IsInRole("admin") || User.IsInRole("user"))
+
                             {<a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
 
                                 <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Family" asp-action="Delete" asp-route-id="@item.Id">Delete</a>

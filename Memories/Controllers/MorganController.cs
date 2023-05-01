@@ -39,8 +39,8 @@ namespace Memories.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            FamilyMember familyMember = await _familyMemberRepository.GetByIdAsync(id);
-            return View(familyMember);
+            IEnumerable<FamilyMember> familyMembers = await _familyMemberRepository.GetAll();
+            return View(familyMembers);
         }
 
 
